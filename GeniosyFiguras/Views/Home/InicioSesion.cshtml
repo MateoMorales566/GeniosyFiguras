@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Portada";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenidos a GyF</title>
+
+    <!-- Ruta correcta al CSS -->
+    <link rel="stylesheet" href="~/Content/EstilosInicioSesion.css"x` />
+</head>
+    <body>
+        <div class="fondo">
+            <div class="contenedor">
+                <div class="tarjeta">
+                    <div class="encabezado">
+                        <h1>Bienvenidos a GyF</h1>
+                        <img class="logo-encabezado" src="~/Content/imagenes/j1.png" alt="Logo GyF">
+                    </div>
+
+                    <button class="boton-amarillo">Usuario</button>
+                    <div class="campo">
+                        <input type="text" placeholder="Ingresa tu usuario">
+                        <button class="icono-buscar">🔍</button>
+                    </div>
+
+                    <button class="boton-amarillo">Contraseña</button>
+                    <div class="campo">
+                        <input type="password" placeholder="Ingresa tu contraseña">
+                        <button class="icono-buscar">🔍</button>
+                    </div>
+
+                    <div class="acciones">
+                        <a href="#">¿Has olvidado tu contraseña?</a>
+                        <button class="boton-ingresar">Ingresar</button>
+                        <br />
+                        <br />
+                        <a href="#">@Html.ActionLink("¿No tiene una cuenta? Regístrate", "CreateUsuario", "User")</a>
+                    </div>
+
+                    <div class="dragon">
+                        <img src="~/Content/imagenes/continuar.png" alt="dragón">
+                    </div>
+                </div>
+
+                <div class="imagen-lateral">
+                    <img src="~/Content/imagenes/cala2.jpeg" alt="Partida de rol">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

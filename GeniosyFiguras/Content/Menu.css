@@ -1,0 +1,35 @@
+﻿.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #d93d2d;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+    .navbar a {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        margin: 0 5px;
+        text-decoration: none;
+        color: #1d1736;
+        font-weight: 500;
+        background-color: white;
+        border-radius: 3px;
+        transition: background-color 0.3s;
+    }
+
+        .navbar a:hover {
+            background-color: orange;
+            color: white;
+        }
+
+        .navbar a.active {
+            background-color: #d93d2d;
+            color: white;
+        }
+
+    .navbar img {
+        vertical-align: middle;
+    }

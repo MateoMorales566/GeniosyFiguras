@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "ListaUsuarios";
+}
+
+<h2>ListaUsuarios</h2>
+@*Comando para realizar formularios*@
+@using (Html.BeginForm())
+{
+    <select name="selUsuarios">
+        @foreach (string user in Model)
+        {
+            <option> @user</option>
+        }
+    </select>
+    <br />
+    <br />
+    @*pasar datos controladores a vistas*@
+    <h4 style="color:green"> Usuario seleccionado: @ViewBag.Nombre</h4>
+    <br />
+    <button type="submit">Seleccionar usuario </button>
+
+}
+@Html.ActionLink("Regresar", "Index")

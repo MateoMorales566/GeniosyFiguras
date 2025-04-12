@@ -1,0 +1,124 @@
+﻿body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #b3e5fc;
+}
+
+.fondo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #b3e5fc;
+}
+
+.contenedor {
+    display: flex;
+    background-color: #0097a7;
+    padding: 40px;
+    border-radius: 20px;
+    gap: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.tarjeta {
+    background-color: #e1f5fe;
+    padding: 30px;
+    border-radius: 20px;
+    width: 400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.encabezado {
+    background: linear-gradient(to right, #ffeb3b, #ffe082);
+    border-radius: 0;
+    padding: 20px 30px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .encabezado h1 {
+        margin: 0;
+        font-size: 24px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+        flex: 1;
+        text-align: left;
+    }
+
+.logo-encabezado {
+    width: 60px;
+    height: auto;
+    margin-left: 20px;
+}
+
+.boton-amarillo {
+    background-color: #ffd54f;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: default;
+    text-align: center;
+}
+
+.campo {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 30px;
+    padding: 5px 10px;
+    border: 2px solid #7c4dff;
+}
+
+    .campo input {
+        flex: 1;
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 30px;
+    }
+
+.icono-buscar {
+    background-color: #7c4dff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.acciones {
+    text-align: center;
+    font-size: 14px;
+}
+
+.boton-ingresar {
+    margin-top: 10px;
+    background-color: #2196f3;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.dragon img {
+    width: 70px;
+    margin-top: 10px;
+}
+
+.imagen-lateral img {
+    width: 380px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}

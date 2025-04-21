@@ -1,72 +1,90 @@
 ﻿@model GeniosyFiguras.Dtos.UsuarioDto
-
+@using System.Web.Mvc
 @{
     ViewBag.Title = "CreateUsuario";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CreateUsuario</h2>
+<link rel="stylesheet" type="text/css" href="~/Content/EstilosRegistro.css" />
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>UsuarioDto</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
+<h2>Registro de Usuario</h2>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+<!-- Modal visible directamente -->
+<div id="id01" class="modal" style="display:block;">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+    @using (Html.BeginForm("CreateUsuario", "User", FormMethod.Post, new { @class = "modal-content" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container">
+            <h1>Crear Cuenta</h1>
+            <p>Por favor, llena el siguiente formulario.</p>
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div style="margin-bottom: 20px;">
+                <label for="Nombres"><b>Nombres</b></label>
                 @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nombres, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Apellidos, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div style="margin-bottom: 20px;">
+                <label for="Apellidos"><b>Apellidos</b></label>
                 @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Apellidos, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div style="margin-bottom: 20px;">
+                <label for="Email"><b>Email</b></label>
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div style="margin-bottom: 20px;">
+                <label for="Telefono"><b>Teléfono</b></label>
                 @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Contraseña, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @class = "form-control" } })
+            <div style="margin-bottom: 20px;">
+                <label for="NombreUsuario"><b>Nombre de Usuario</b></label>
+                @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label for="Contraseña"><b>Contraseña</b></label>
+                @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @class = "form-control", type = "password" } })
                 @Html.ValidationMessageFor(model => model.Contraseña, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        
+            <div style="margin-bottom: 20px;">
+                <label>
+                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:10px"> Recordarme
+                </label>
+            </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="clearfix">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
+                <button type="submit" class="signupbtn">Registrar</button>
             </div>
         </div>
-    </div>
-}
+    }
+</div>
+
+<!-- Script para cerrar el modal al hacer clic fuera de él -->
+<script>
+    var modal = document.getElementById('id01');
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 <div>
-    @Html.ActionLink("Return", "Index")
+    @Html.ActionLink("Volver", "Index")
 </div>
+

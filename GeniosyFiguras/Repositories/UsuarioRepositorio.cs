@@ -17,8 +17,8 @@ namespace GeniosyFiguras.Repositories
             DBContextUtility Connection = new DBContextUtility();
             Connection.Connect();
             //consulta SQL
-            string SQL = "INSERT INTO APP.DBO.[Usuario](Nombres,Apellidos,Email,Telefono,Contraseña,IdRol)"
-                + "VALUES ('" + usuario.Nombres + "','" + usuario.Apellidos + "','" + usuario.Email + "','" + usuario.Telefono + "','"
+            string SQL = "INSERT INTO APP.DBO.[Usuario](Nombres,Apellidos,Email,Telefono,Usuario,Contraseña,IdRol)"
+                + "VALUES ('" + usuario.Nombres + "','" + usuario.Apellidos + "','" + usuario.Email + "','" + usuario.Telefono + "','" + usuario.NombreUsuario + "','"
                 + usuario.Contraseña + "'," + usuario.IdRol + ");";
             using (SqlCommand command= new SqlCommand(SQL, Connection.CONN()))
             {

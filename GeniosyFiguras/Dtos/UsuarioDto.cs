@@ -13,7 +13,7 @@ namespace GeniosyFiguras.Dtos
         public string Apellidos { get; set; } = string.Empty;
         public string Email{ get; set; } = string.Empty;
         public string Telefono { get; set; } = string.Empty;
-        public string Usuario { get; set; } = string.Empty;
+        public string NombreUsuario { get; set; } = string.Empty;
         public string Contraseña { get; set; } = string.Empty;
         public int IdRol { get; set; }
 

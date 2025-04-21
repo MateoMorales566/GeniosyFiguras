@@ -3,6 +3,7 @@
     ViewBag.Title = "Portada";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model GeniosyFiguras.Dtos.UsuarioDto
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,47 +11,58 @@
     <title>Bienvenidos a GyF</title>
 
     <!-- Ruta correcta al CSS -->
-    <link rel="stylesheet" href="~/Content/EstilosInicioSesion.css"x` />
+    <link rel="stylesheet" href="~/Content/EstilosInicioSesion.css"  />
 </head>
-    <body>
-        <div class="fondo">
-            <div class="contenedor">
-                <div class="tarjeta">
-                    <div class="encabezado">
-                        <h1>Bienvenidos a GyF</h1>
-                        <img class="logo-encabezado" src="~/Content/imagenes/j1.png" alt="Logo GyF">
+<body>
+    <div class="fondo">
+        <div class="contenedor">
+            <div class="tarjeta">
+                <div class="encabezado">
+                    <h1>Bienvenidos a GyF</h1>
+                    <img class="logo-encabezado" src="~/Content/imagenes/j1.png" alt="Logo GyF">
+                </div>
+
+                @using (Html.BeginForm("InicioSesion", "User", FormMethod.Post))
+                {
+                    <button class="boton-amarillo" type="button">Usuario</button>
+                    <div class="campo">
+                        @Html.TextBoxFor(m => m.NombreUsuario, new { @placeholder = "Ingresa tu usuario", @class = "form-control" })
+                        <button class="icono-buscar" type="button">🔍</button>
                     </div>
 
-                    <button class="boton-amarillo">Usuario</button>
+                    <button class="boton-amarillo" type="button">Contraseña</button>
                     <div class="campo">
-                        <input type="text" placeholder="Ingresa tu usuario">
-                        <button class="icono-buscar">🔍</button>
-                    </div>
-
-                    <button class="boton-amarillo">Contraseña</button>
-                    <div class="campo">
-                        <input type="password" placeholder="Ingresa tu contraseña">
-                        <button class="icono-buscar">🔍</button>
+                        @Html.PasswordFor(m => m.Contraseña, new { @placeholder = "Ingresa tu contraseña", @class = "form-control" })
+                        <button class="icono-buscar" type="button">🔍</button>
                     </div>
 
                     <div class="acciones">
                         <a href="#">¿Has olvidado tu contraseña?</a>
-                        <button class="boton-ingresar">Ingresar</button>
-                        <br />
-                        <br />
-                        <a href="#">@Html.ActionLink("¿No tiene una cuenta? Regístrate", "CreateUsuario", "User")</a>
-                    </div>
 
-                    <div class="dragon">
-                        <img src="~/Content/imagenes/continuar.png" alt="dragón">
-                    </div>
-                </div>
+                        <button type="submit" class="boton-ingresar">Ingresar</button>
 
-                <div class="imagen-lateral">
-                    <img src="~/Content/imagenes/cala2.jpeg" alt="Partida de rol">
+                        <br /><br />
+
+
+                        @Html.ActionLink("¿No tiene una cuenta? Regístrate", "CreateUsuario", "User")
+                    </div>
+                }
+                    @if (ViewBag.MensajeError != null)
+                    {
+                        <div class="text-danger">@ViewBag.MensajeError</div>
+                    }
+                
+
+                <div class="dragon">
+                    <img src="~/Content/imagenes/continuar.png" alt="dragón">
                 </div>
             </div>
+
+            <div class="imagen-lateral">
+                <img src="~/Content/imagenes/cala2.jpeg" alt="Partida de rol">
+            </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
 

@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Panel Profesor";
+}
+
+@section styles {
+    <link href="~/Content/menuProfesor.css" rel="stylesheet" />
+}
+<section class="contenedor-principal">
+    <!-- Imágenes laterales -->
+    <div class="lateral-izquierda">
+        <img src="~/Content/imagenes/castillo.png" alt="Castillo" class="icono-castillo" />
+        <img src="~/Content/imagenes/dragon.png" alt="Dragón" class="icono-dragon" />
+    </div>
+
+    <!-- Tabla central -->
+    <div class="tabla-contenedor">
+        <table class="tabla-profesor">
+            <thead>
+                <tr>
+                    <th>
+                        <span class="celda-header">
+                            <img src="~/Content/imagenes/user-icon.png" alt="Icono Usuario" class="icono-header" />
+                            Datos personales
+                            <img src="~/Content/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha-icono" />
+                        </span>
+                    </th>
+                    <th>
+                        <span class="celda-header">
+                            Mis cursos
+                            <img src="~/Content/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha-icono" />
+                        </span>
+                    </th>
+                    <th>
+                        <span class="celda-header">
+                            Estudiantes
+                            <img src="~/Content/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha-icono" />
+                        </span>
+                    </th>
+                    <th>
+                        <span class="celda-header">
+                            Juego
+                            <img src="~/Content/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha-icono" />
+                        </span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < 5; i++)
+                {
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- Botón cerrar sesión -->
+        <div class="boton-cerrar">
+            <button>Cerrar sesión</button>
+        </div>
+    </div>
+
+    <!-- Botón de inicio -->
+    <div class="boton-inicio">
+        <img src="~/Content/imagenes/home-icon.png" alt="Inicio" />
+    </div>
+</section>
+
+x
+

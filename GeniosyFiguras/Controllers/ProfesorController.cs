@@ -15,5 +15,9 @@ namespace GeniosyFiguras.Controllers
 
             return Content(nomsalida);
         }
+        public ActionResult IndexProfesor()
+        {
+            return View();
+        }
     }
 }

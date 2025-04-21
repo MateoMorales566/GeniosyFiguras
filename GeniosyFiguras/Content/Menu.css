@@ -1,35 +1,107 @@
-﻿.navbar {
-    display: flex;
-    justify-content: center;
-    background-color: #d93d2d;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 20px;
+﻿body {padding: 10px 0;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-    .navbar a {
+/* Estilos del header */
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: #b3e5fc; /* Naranja fuerte */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+/* Logo opcional */
+.header-logo {
+    margin-right: auto;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+/* Contenedor de links */
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+    /* Estilos iguales para todos los enlaces */
+    .nav-links a {
+        background-color: #1e6495; /* Mismo color que el fondo */
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s ease, color 0.3s ease;
         display: flex;
         align-items: center;
-        padding: 12px 20px;
-        margin: 0 5px;
-        text-decoration: none;
-        color: #1d1736;
-        font-weight: 500;
-        background-color: white;
-        border-radius: 3px;
-        transition: background-color 0.3s;
     }
 
-        .navbar a:hover {
-            background-color: orange;
-            color: white;
+        /* Hover: cambia a blanco con texto rojo */
+        .nav-links a:hover {
+            background-color: white;
+            color: #0a4b75;
         }
 
-        .navbar a.active {
-            background-color: #d93d2d;
-            color: white;
-        }
+    /* Icono de "Iniciar sesión" */
+    .nav-links img {
+        margin-right: 5px;
+        width: 18px;
+    }
 
-    .navbar img {
-        vertical-align: middle;
+
+.banner {
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+}
+
+.enemigos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+   
+}
+
+.enemigo {
+    background-color: #0097a7;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+    .enemigo img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .enemigo p {
+        margin-top: 10px;
+        color: black;
+        font-weight: bold;
     }

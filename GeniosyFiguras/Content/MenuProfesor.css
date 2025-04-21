@@ -1,0 +1,89 @@
+﻿body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #c6e2f5; /* Fondo azul claro */
+    font-family: Arial, sans-serif;
+}
+
+.contenedor-principal {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.lateral-izquierda {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.icono-castillo, .icono-dragon {
+    width: 80px;
+    height: auto;
+}
+
+.tabla-contenedor {
+    flex-grow: 1;
+    background-color: #0597a8; /* Azul fuerte */
+    margin: 10px;
+    padding: 20px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.tabla-profesor {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #42cdd0; /* Fondo celeste */
+}
+
+    .tabla-profesor th, .tabla-profesor td {
+        border: 2px solid black;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .tabla-profesor thead th {
+        background-color: #b8d9f3; /* Azul más claro */
+    }
+
+.celda-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.icono-header, .flecha-icono {
+    width: 24px;
+    height: 24px;
+}
+
+.boton-cerrar {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+    .boton-cerrar button {
+        background-color: #ff4d4d;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+.boton-inicio {
+    position: absolute;
+    bottom: 10px;
+    left: 120px;
+}
+
+    .boton-inicio img {
+        width: 50px;
+        height: 50px;
+    }

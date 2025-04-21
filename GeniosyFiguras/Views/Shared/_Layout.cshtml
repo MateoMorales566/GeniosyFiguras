@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,30 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     <link href="~/Content/menu.css" rel="stylesheet" />
+
+    @RenderSection("styles", required: false)
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <nav class="navbar">
-    <a href="@Url.Action("Index", "Home")" >Inicio</a>
-    <a href="@Url.Action("Juegos", "Home")">Juegos</a>
-    <a href="@Url.Action("Empleo", "Home")">Empleo</a>
-    <a href="@Url.Action("AcercaDe", "Home")">Acerca de</a>
-    <a href="@Url.Action("Contacto", "Home")">Contacto</a>
-    <a href="@Url.Action("Login", "Cuenta")">
-        <img src="~/Content/imagenes/flecha1.png" alt="Iniciar sesión" style="width: 20px; height: 20px; margin-right: 5px;">
-        Iniciar sesión
-    </a>
-</nav>
-        </div>
-    </div>
-    <div class="container body-content">
+<body style="margin: 0; padding: 0;">
+
+
+    <header class="navbar">
+        <div class="header-logo">Juegos Tripp</div>
+        <nav class="nav-links">
+            <a href="@Url.Action("Index", "Home")">Inicio</a>
+            <a href="@Url.Action("Juegos", "Home")">Juegos</a>
+            <a href="@Url.Action("Empleo", "Home")">Empleo</a>
+            <a href="@Url.Action("About", "Home")">Acerca de</a>
+            <a href="@Url.Action("Contact", "Home")">Contacto</a>
+            <a href="@Url.Action("InicioSesion", "Home")">
+                <img src="~/Content/imagenes/flecha1.png" alt="Iniciar sesión" />
+                Iniciar sesión
+            </a>
+        </nav>
+    </header>
+
+
+
+
+
+
+
+
+    <main>
         @RenderBody()
-        <hr />
-       
-    </div>
+    </main>
     @Html.Partial("Piepagina")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

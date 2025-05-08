@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "NuevoCurso";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<GeniosyFiguras.Dtos.CursoDto>
+@{
+    ViewBag.Title = "Nuevo Curso";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agregar Nuevo Curso</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div style="color: red;">@ViewBag.Error</div>
+}
+
+<form method="post" action="/Curso/NuevoCurso">
+    <label>Nombre del Curso:</label>
+    <input type="text" name="NombreCurso" required /><br /><br />
+
+    <label>Número de Estudiantes:</label>
+    <input type="number" name="NumeroEstudiantes" required /><br /><br />
+
+    <button type="submit">Guardar</button>
+</form>
+
+

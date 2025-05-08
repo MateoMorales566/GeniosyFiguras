@@ -18,7 +18,7 @@ namespace GeniosyFiguras.Utilities
         static string Conn = "server=" + SERVER + ";dataBase=" + DB_NAME+ ";user id=" +DB_USER+ ";password="+ DB_PASSWORD +";MultipleActiveResultSets=true;";
         //Mi conexion
         SqlConnection Con = new SqlConnection(Conn);
-
+        public static string CadenaConexion => Conn;
         //Procedimiento que abre la conexion sqlserver
         public void Connect()
         {
@@ -42,5 +42,9 @@ namespace GeniosyFiguras.Utilities
             return Con;
         }
 
+        internal static IDisposable GetConnection()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

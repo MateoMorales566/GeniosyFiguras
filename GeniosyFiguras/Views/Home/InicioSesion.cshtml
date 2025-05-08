@@ -24,6 +24,7 @@
 
                 @using (Html.BeginForm("InicioSesion", "User", FormMethod.Post))
                 {
+                    @Html.AntiForgeryToken()
                     <button class="boton-amarillo" type="button">Usuario</button>
                     <div class="campo">
                         @Html.TextBoxFor(m => m.NombreUsuario, new { @placeholder = "Ingresa tu usuario", @class = "form-control" })
@@ -47,11 +48,11 @@
                         @Html.ActionLink("¿No tiene una cuenta? Regístrate", "CreateUsuario", "User")
                     </div>
                 }
-                    @if (ViewBag.MensajeError != null)
-                    {
-                        <div class="text-danger">@ViewBag.MensajeError</div>
-                    }
-                
+                @if (ViewBag.MensajeError != null)
+                {
+                    <div class="text-danger">@ViewBag.MensajeError</div>
+                }
+
 
                 <div class="dragon">
                     <img src="~/Content/imagenes/continuar.png" alt="dragón">

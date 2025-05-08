@@ -13,20 +13,20 @@ namespace GeniosyFiguras
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "Profesor",
-                url: "{controller}/{action}/{nombre}",
-                defaults: new { controller = "Profesor", action = "Buscar", nombre = UrlParameter.Optional }
-
-            );
-
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "User", action = "Index", id = UrlParameter.Optional }
-                
             );
-            
+
+           
+            routes.MapRoute(
+                name: "Profesor",
+                url: "{controller}/{action}/{nombre}",
+                defaults: new { controller = "Profesor", action = "Buscar", nombre = UrlParameter.Optional }
+            );
         }
     }
+
 }

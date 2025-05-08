@@ -137,19 +137,24 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministradorController.cs" />
-    <Compile Include="Controllers\CursosController.cs" />
+    <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\EstudianteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfesorController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Dtos\CursoDto.cs" />
     <Compile Include="Dtos\RolDto.cs" />
+    <Compile Include="Dtos\UsuarioConCalificacionDto.cs" />
+    <Compile Include="Dtos\UsuarioCurso.cs" />
     <Compile Include="Dtos\UsuarioDto.cs" />
     <Compile Include="Dtos\UsuarioListaDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CursoRepositorio.cs" />
     <Compile Include="Repositories\UsuarioRepositorio.cs" />
+    <Compile Include="Services\CursoServicio.cs" />
     <Compile Include="Services\UsuarioServicio.cs" />
     <Compile Include="Utilities\DBContextUtility.cs" />
   </ItemGroup>
@@ -158,16 +163,22 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\EstilosCurso.css" />
     <Content Include="Content\EstilosInicioSesion.css" />
     <Content Include="Content\EstilosRegistro.css" />
+    <Content Include="Content\Imagenes\atri1.png" />
     <Content Include="Content\Imagenes\cala1.jpg" />
     <Content Include="Content\Imagenes\cala2.jpeg" />
+    <Content Include="Content\Imagenes\casa.png" />
     <Content Include="Content\Imagenes\continuar.png" />
     <Content Include="Content\Imagenes\enemigo1.jpg" />
     <Content Include="Content\Imagenes\enemigo2.jpg" />
     <Content Include="Content\Imagenes\enemigo3.jpg" />
+    <Content Include="Content\Imagenes\Enemigo6.jpg" />
+    <Content Include="Content\Imagenes\flecha-abajo.png" />
     <Content Include="Content\Imagenes\flecha1.png" />
     <Content Include="Content\Imagenes\fotoprincipal.jpeg" />
+    <Content Include="Content\Imagenes\grupo_est.jpg" />
     <Content Include="Content\Imagenes\j1.png" />
     <Content Include="Content\Menu.css" />
     <Content Include="Content\MenuProfesor.css" />
@@ -212,14 +223,18 @@
     <Content Include="Views\Shared\Piepagina.cshtml" />
     <Content Include="Views\Home\InicioSesionUsuario.cshtml" />
     <Content Include="Views\Profesor\IndexProfesor.cshtml" />
+    <Content Include="Views\Curso\IndexCurso.cshtml" />
+    <Content Include="Views\Curso\NuevoCurso.cshtml" />
+    <Content Include="Views\Curso\EditarCurso.cshtml" />
+    <Content Include="Views\Estudiante\IndexEstudiante.cshtml" />
+    <Content Include="Views\Estudiante\NuevoEstudiante.cshtml" />
+    <Content Include="Views\Estudiante\EditarEstudiante.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Repositories\Models\" />
     <Folder Include="Views\Administrador\" />
-    <Folder Include="Views\Cursos\" />
     <Folder Include="Views\Estilos\" />
-    <Folder Include="Views\Estudiante\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

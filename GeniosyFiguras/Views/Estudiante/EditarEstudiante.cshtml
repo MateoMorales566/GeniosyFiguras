@@ -1,0 +1,49 @@
+﻿@model GeniosyFiguras.Dtos.UsuarioConCalificacionDto
+@{
+    ViewBag.Title = "EditarEstudiante";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditarEstudiante</h2>
+
+@using (Html.BeginForm("EditarEstudiante", "Estudiante", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Usuario.IdUsuario)
+    @Html.HiddenFor(model => model.IdCurso)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Usuario.NombreUsuario)
+        @Html.TextBoxFor(model => model.Usuario.NombreUsuario, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+
+    <h4>Notas</h4>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NotaMatematicas)
+        @Html.TextBoxFor(model => model.NotaMatematicas, new { @class = "form-control", type = "number", step = "0.1", min = "0", max = "5" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NotaSociales)
+        @Html.TextBoxFor(model => model.NotaSociales, new { @class = "form-control", type = "number", step = "0.1", min = "0", max = "5" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NotaCiencias)
+        @Html.TextBoxFor(model => model.NotaCiencias, new { @class = "form-control", type = "number", step = "0.1", min = "0", max = "5" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NotaArtes)
+        @Html.TextBoxFor(model => model.NotaArtes, new { @class = "form-control", type = "number", step = "0.1", min = "0", max = "5" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NotaLenguas)
+        @Html.TextBoxFor(model => model.NotaLenguas, new { @class = "form-control", type = "number", step = "0.1", min = "0", max = "5" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a href="@Url.Action("IndexEstudiante", "Estudiante")" class="btn btn-secondary">Cancelar</a>
+}
+

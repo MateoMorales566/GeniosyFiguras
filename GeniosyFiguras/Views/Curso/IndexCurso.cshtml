@@ -1,0 +1,105 @@
+﻿@model List<GeniosyFiguras.Dtos.CursoDto>
+
+@{
+    ViewBag.Title = "IndexCurso";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/EstilosCurso.css" rel="stylesheet" />
+<div class="contenedor-cursos">
+    <h2>Listado de tus cursos</h2>
+
+    <div class="barra-busqueda">
+        <form method="get" action="/Curso/IndexCurso" class="barra-busqueda">
+            <label for="IdCurso">IdCurso:</label>
+            <input type="text" id="IdCurso" name="IdCurso" placeholder="IdCurso">
+
+            <label for="NombreCurso">NombreCurso:</label>
+            <input type="text" id="NombreCurso" name="NombreCurso" placeholder="NombreCurso">
+
+            <button type="submit" class="btn-buscar">🔍 Buscar</button>
+
+            <button type="button" class="btn-nuevo" onclick="location.href='/Curso/NuevoCurso'">➕ Nuevo Curso</button>
+        </form>
+    </div>
+
+    <table class="tabla-cursos">
+        <thead>
+            <tr>
+                <th>IdCurso</th>
+                <th>Nombre del Curso</th>
+                <th>Número de Estudiantes</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var curso in Model)
+            {
+                <tr>
+                    <td>@curso.IdCurso</td>
+                    <td>@curso.NombreCurso</td>
+                    <td>@curso.NumeroEstudiantes</td>
+                    <td>
+                        <button class="btn-accion editar" data-id="@curso.IdCurso" title="Editar">✏️</button>
+
+                        <script>
+                            $(function () {
+                                $('.editar').on('click', function () {
+                                    var id = $(this).data('id');
+                                    console.log("ID capturado:", id);
+
+                                    if (!id) {
+                                        alert('Error: No se encontró el ID del curso.');
+                                        return;
+                                    }
+
+                                    window.location.href = '/Curso/EditarCurso/' + id;
+                                });
+                            });
+                        </script>
+
+
+
+                        <button class="btn-accion estudiantes" data-id="@curso.IdCurso" title="Ver estudiantes">👥</button>
+
+                        <script>
+                            $(function () {
+                                $('.estudiantes').on('click', function () {
+                                    var id = $(this).data('id');
+                                    if (id) {
+                                        window.location.href = '/Estudiante/IndexEstudiante/' + id;
+                                    } else {
+                                        alert('No se encontró el ID del curso.');
+                                    }
+                                });
+                            });
+                        </script>
+
+
+
+                        <button class="btn-accion eliminar" data-id="@curso.IdCurso" title="Eliminar">🗑️</button>
+                        <script>
+                            $(function () {
+                                $('.eliminar').on('click', function () {
+                                    var id = $(this).data('id');
+                                    console.log("ID capturado para eliminar:", id);
+
+                                    if (!id) {
+                                        alert('Error: No se encontró el ID del curso.');
+                                        return;
+                                    }
+
+                                    if (confirm('¿Estás seguro de que deseas eliminar este curso?')) {
+                                        window.location.href = '/Curso/EliminarCurso/' + id;
+                                    }
+                                });
+                            });
+                        </script>
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

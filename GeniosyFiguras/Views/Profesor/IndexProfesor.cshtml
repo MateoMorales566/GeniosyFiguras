@@ -3,72 +3,59 @@
     ViewBag.Title = "Panel Profesor";
 }
 
-@section styles {
-    <link href="~/Content/menuProfesor.css" rel="stylesheet" />
-}
-<section class="contenedor-principal">
-    <!-- Imágenes laterales -->
-    <div class="lateral-izquierda">
-        <img src="~/Content/imagenes/castillo.png" alt="Castillo" class="icono-castillo" />
-        <img src="~/Content/imagenes/dragon.png" alt="Dragón" class="icono-dragon" />
-    </div>
 
-    <!-- Tabla central -->
-    <div class="tabla-contenedor">
-        <table class="tabla-profesor">
-            <thead>
-                <tr>
-                    <th>
-                        <span class="celda-header">
-                            <img src="~/Content/imagenes/user-icon.png" alt="Icono Usuario" class="icono-header" />
-                            Datos personales
-                            <img src="~/Content/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha-icono" />
-                        </span>
-                    </th>
-                    <th>
-                        <span class="celda-header">
-                            Mis cursos
-                            <img src="~/Content/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha-icono" />
-                        </span>
-                    </th>
-                    <th>
-                        <span class="celda-header">
-                            Estudiantes
-                            <img src="~/Content/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha-icono" />
-                        </span>
-                    </th>
-                    <th>
-                        <span class="celda-header">
-                            Juego
-                            <img src="~/Content/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha-icono" />
-                        </span>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (int i = 0; i < 5; i++)
-                {
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+ <link href="~/Content/MenuProfesor.css" rel="stylesheet" />
 
-        <!-- Botón cerrar sesión -->
-        <div class="boton-cerrar">
-            <button>Cerrar sesión</button>
+<div class="contenedor-principal">
+    <div class="menu-lateral">
+        <img src="~/Content/imagenes/j1.png" alt="Iglesia" class="logo-iglesia">
+
+        <div class="opcion-menu">
+            <span>Datos personales</span>
+            <img src="~/Content/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha">
+        </div>
+
+        <div class="opcion-menu" onclick="window.location.href='@Url.Action("IndexCurso", "Curso")'" >
+            <span>Mis cursos </span>
+            <img src="~/Content/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha">
+        </div>
+
+        <div class="opcion-menu"
+             <span>Atributos</span>
+            <img src="~/Content/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha">
+        </div>
+
+        <div class="opcion-menu">
+            <span>Enemigos</span>
+            <img src="~/Content/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha">
+        </div>
+
+        <div class="icono-home">
+            <img src="~/Content/imagenes/casa.png" alt="Inicio">
         </div>
     </div>
 
-    <!-- Botón de inicio -->
-    <div class="boton-inicio">
-        <img src="~/Content/imagenes/home-icon.png" alt="Inicio" />
-    </div>
-</section>
+    <div class="contenido-principal">
+        <div class="bienvenida">
+            <h1>¡Bienvenido, profesor!</h1>
+            <p>Aquí podrás crear cursos, agregar estudiantes, asignar atributos de poder y enfrentar nuevos desafíos.</p>
+        </div>
 
-x
+        <div class="imagenes">
+            <div class="bloque">
+                <img src="~/Content/imagenes/Enemigo6.jpg" alt="Troll enemigo" class="imagen-principal">
+                <img src="~/Content/imagenes/atri1.png" alt="Barras de vida" class="imagen-barra">
+            </div>
+
+            <div class="bloque">
+                <img src="~/Content/imagenes/grupo_est.jpg" alt="Partida de rol" class="imagen-principal">
+                <img src="~/Content/imagenes/atri1.png" alt="Barras de vida" class="imagen-barra">
+            </div>
+        </div>
+
+        <button class="boton-cerrar-sesion">Cerrar sesión</button>
+    </div>
+</div>
+
+
 

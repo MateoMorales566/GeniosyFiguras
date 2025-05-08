@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "EditarCurso";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model GeniosyFiguras.Dtos.CursoDto
+
+<h2>Editar Curso</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.IdCurso)
+
+    <div>
+        @Html.LabelFor(m => m.NombreCurso)
+        @Html.TextBoxFor(m => m.NombreCurso)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.NumeroEstudiantes)
+        @Html.TextBoxFor(m => m.NumeroEstudiantes)
+    </div>
+
+    <button type="submit">Guardar cambios</button>
+}
+
+

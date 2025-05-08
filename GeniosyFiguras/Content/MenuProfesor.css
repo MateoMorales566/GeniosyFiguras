@@ -1,89 +1,114 @@
-﻿body, html {
+﻿body {
     margin: 0;
-    padding: 0;
-    background-color: #c6e2f5; /* Fondo azul claro */
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #cce6ff;
 }
 
 .contenedor-principal {
     display: flex;
-    position: relative;
-    width: 100%;
     height: 100vh;
 }
 
-.lateral-izquierda {
+.menu-lateral {
+    width: 20%;
+    background-color: #0099b3;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
-}
-
-.icono-castillo, .icono-dragon {
-    width: 80px;
-    height: auto;
-}
-
-.tabla-contenedor {
-    flex-grow: 1;
-    background-color: #0597a8; /* Azul fuerte */
-    margin: 10px;
-    padding: 20px;
-    position: relative;
-    border-radius: 10px;
-}
-
-.tabla-profesor {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #42cdd0; /* Fondo celeste */
-}
-
-    .tabla-profesor th, .tabla-profesor td {
-        border: 2px solid black;
-        padding: 10px;
-        text-align: center;
-    }
-
-    .tabla-profesor thead th {
-        background-color: #b8d9f3; /* Azul más claro */
-    }
-
-.celda-header {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 5px;
+    padding-top: 10px;
+    position: relative;
 }
 
-.icono-header, .flecha-icono {
-    width: 24px;
-    height: 24px;
+.logo-iglesia {
+    width: 80%;
+    margin-bottom: 20px;
 }
 
-.boton-cerrar {
+.opcion-menu {
+    background-color: #66b3ff;
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flecha {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+}
+.icono-home {
     position: absolute;
-    bottom: 10px;
-    right: 20px;
+    bottom: 60px;
 }
 
-    .boton-cerrar button {
-        background-color: #ff4d4d;
-        border: none;
-        padding: 10px 20px;
-        color: white;
-        border-radius: 20px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-.boton-inicio {
-    position: absolute;
-    bottom: 10px;
-    left: 120px;
-}
-
-    .boton-inicio img {
+    .icono-home img {
         width: 50px;
-        height: 50px;
     }
+
+.contenido-principal {
+    width: 80%;
+    padding: 40px 20px;
+    position: relative;
+}
+
+.bienvenida {
+    background-color: transparent;
+    border: none;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #003366;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.imagenes {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.bloque {
+    background-color: transparent; 
+    padding: 0; 
+    border-radius: 0; 
+    box-shadow: none; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto; 
+}
+
+.imagen-principal {
+    width: 250px;
+    height: 250px;
+    object-fit: contain; 
+    background: none;
+}
+
+.imagen-barra {
+    width: 120px;
+    margin-top: 15px;
+}
+
+.boton-cerrar-sesion {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff3333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}

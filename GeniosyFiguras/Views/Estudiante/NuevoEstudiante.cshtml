@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "NuevoEstudiantes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model GeniosyFiguras.Dtos.UsuarioConCalificacionDto
+
+@{
+    ViewBag.Title = "Agregar Estudiante a Curso";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agregar Estudiante al Curso</h2>
+
+@using (Html.BeginForm("NuevoEstudiante", "Estudiante", FormMethod.Post))
+{
+    <input type="hidden" name="IdCurso" value="@ViewBag.IdCurso" />
+
+    <div>
+        <label>Nombres:</label>
+        @Html.TextBoxFor(m => m.Usuario.Nombres)
+    </div>
+    <div>
+        <label>Apellidos:</label>
+        @Html.TextBoxFor(m => m.Usuario.Apellidos)
+    </div>
+    <div>
+        <label>Nombre de usuario:</label>
+        @Html.TextBoxFor(m => m.Usuario.NombreUsuario)
+    </div>
+    <div>
+        <label>Contraseña:</label>
+        @Html.PasswordFor(m => m.Usuario.Contraseña)
+    </div>
+
+    <h4>Notas</h4>
+    <div>
+        <label>Matemáticas:</label>
+        @Html.TextBoxFor(m => m.NotaMatematicas)
+    </div>
+    <div>
+        <label>Sociales:</label>
+        @Html.TextBoxFor(m => m.NotaSociales)
+    </div>
+    <div>
+        <label>Ciencias:</label>
+        @Html.TextBoxFor(m => m.NotaCiencias)
+    </div>
+    <div>
+        <label>Artes:</label>
+        @Html.TextBoxFor(m => m.NotaArtes)
+    </div>
+    <div>
+        <label>Lenguas:</label>
+        @Html.TextBoxFor(m => m.NotaLenguas)
+    </div>
+    <button type="submit">Crear y Asignar</button>
+}
+
+

@@ -1,0 +1,82 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Elimina márgenes de html también */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Jost', sans-serif;
+    background-color: #f4f8fb;
+}
+main {
+    margin-top: 0;
+    padding-top: 70px;
+}
+
+    main *:first-child {
+        margin-top: 0 !important;
+    }
+
+h1, h2, h3, section, form {
+    margin-top: 0;
+    padding-top: 0;
+}
+/* Estilo de la barra superior */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #007ba7, #00a2c3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 8px;
+    z-index: 1000;
+}
+
+
+/* Logo */
+.navbar .header-logo {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    font-family: 'Jost', sans-serif;
+}
+.navbar .titulo {
+    color: #000000;
+}
+/* Enlaces */
+.nav-links a {
+    color: #f0f0f0;
+    margin-left: 24px; /* más espacio entre links */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+    .nav-links a:hover {
+        color: #ffd700;
+    }
+
+/* Estilo para el nombre del usuario */
+.nav-links span {
+    margin-left: 24px;
+    margin-right: 8px; /* evita que esté pegado a "Cerrar sesión" */
+    font-weight: 600;
+    color: #003366;
+    font-size: 16px;
+}
+
+/* Icono de login */
+.nav-links img {
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 6px;
+}

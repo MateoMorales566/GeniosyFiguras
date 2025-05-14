@@ -12,7 +12,7 @@ using GeniosyFiguras.Utilities;
 
 namespace GeniosyFiguras.Controllers
 {
-        public class UserController : Controller
+        public class UsuarioController : Controller
         {
             // GET: User
             public ActionResult Index()
@@ -21,7 +21,7 @@ namespace GeniosyFiguras.Controllers
             }
 
         
-            public ActionResult CreateUsuario()
+            public ActionResult CrearUsuario()
             {
                 UsuarioDto usuario = new UsuarioDto();
                 return View(usuario);
@@ -35,7 +35,7 @@ namespace GeniosyFiguras.Controllers
             }
             [HttpPost]
             [ValidateAntiForgeryToken]
-            public ActionResult CreateUsuario( UsuarioDto usuario)
+            public ActionResult CrearUsuario( UsuarioDto usuario)
             {
                 if (usuario == null)
                 {
@@ -49,41 +49,12 @@ namespace GeniosyFiguras.Controllers
                 // Hashear la contraseña
                 usuario.Contraseña = BCrypt.Net.BCrypt.HashPassword(usuario.Contraseña);
                 UsuarioServicio usuarioServicio = new UsuarioServicio();
-                UsuarioDto responseUsuario = usuarioServicio.CreateUsuario(usuario);
+                UsuarioDto responseUsuario = usuarioServicio.CrearUsuario(usuario);
 
                 return View(responseUsuario);
             }
 
-            /*[HttpPost]
-            public ActionResult InicioSesion( UsuarioDto usuario)
-            {
-                DBContextUtility connection = new DBContextUtility();
-                connection.Connect();
-
-                string sql = "SELECT Usuario, Contraseña FROM APP.DBO.Usuario WHERE Usuario = @Usuario AND Contraseña = @Contraseña";
-
-                using (SqlCommand command = new SqlCommand(sql, connection.CONN()))
-                {
-                    command.Parameters.AddWithValue("@Usuario", usuario.NombreUsuario);
-                    command.Parameters.AddWithValue("@Contraseña", usuario.Contraseña);
-
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read()) // Si encuentra el usuario
-                        {
-                            Session["UsuarioNombre"] = reader["Usuario"].ToString(); // Guarda el nombre en sesión
-                            connection.Disconnect();
-                            return RedirectToAction("IndexProfesor", "Profesor");
-                        }
-                        else
-                        {
-                            ViewBag.MensajeError = "Usuario no encontrado.";
-                            connection.Disconnect();
-                            return RedirectToAction("Index","Home");
-                        }
-                    }
-                }
-            }*/
+            
             [HttpPost]
             [ValidateAntiForgeryToken]
             public ActionResult InicioSesion(UsuarioDto usuario)
@@ -102,7 +73,7 @@ namespace GeniosyFiguras.Controllers
                 connection.Connect();
 
                 // Solo buscar el usuario, no la contraseña
-                string sql = "SELECT Usuario, Contraseña FROM APP.DBO.Usuario WHERE Usuario = @Usuario";
+                string sql = "SELECT Usuario, Contraseña, Nombres, Apellidos, IdRol FROM APP.DBO.Usuario WHERE Usuario = @Usuario";
 
                 using (SqlCommand command = new SqlCommand(sql, connection.CONN()))
                 {
@@ -117,16 +88,20 @@ namespace GeniosyFiguras.Controllers
                             // Verificar la contraseña
                             bool passwordCorrecta = BCrypt.Net.BCrypt.Verify(usuario.Contraseña, hashGuardado);
 
-                            if (passwordCorrecta)
-                            {
-                                // Login exitoso
-                                Session["UsuarioNombre"] = reader["Usuario"].ToString();
-                                //Session["UsuarioNombre"] = usuario.NombreUsuario;
-                                connection.Disconnect();
-                                return RedirectToAction("IndexProfesor", "Profesor");
-                            }
-                            else
-                            {
+                        if (passwordCorrecta)
+                        {
+                            // Login exitoso
+                            Session["UsuarioNombre"] = reader["Usuario"].ToString();
+
+                            Session["NombreCompleto"] = reader["Nombres"].ToString() + " " + reader["Apellidos"].ToString();
+                            Session["IdRol"] = Convert.ToInt32(reader["IdRol"]);
+
+                            connection.Disconnect();
+                            return RedirectToAction("IndexProfesor", "Profesor");
+                        }
+
+                        else
+                        {
                                 // Contraseña incorrecta
                                 ViewBag.MensajeError = "Contraseña incorrecta.";
                                 connection.Disconnect();
@@ -142,10 +117,18 @@ namespace GeniosyFiguras.Controllers
                         }
                     }
                 }
+
+
+            }
+            public ActionResult CerrarSesion()
+            {
+                Session.Clear();
+                return RedirectToAction("Index", "Home");
             }
 
 
 
 
+
         }
-    }
+}

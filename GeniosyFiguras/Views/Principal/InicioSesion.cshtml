@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Portada";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Compartido/Encabezado.cshtml";
 }
 @model GeniosyFiguras.Dtos.UsuarioDto
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
     <title>Bienvenidos a GyF</title>
 
     <!-- Ruta correcta al CSS -->
-    <link rel="stylesheet" href="~/Content/EstilosInicioSesion.css"  />
+    <link rel="stylesheet" href="~/Contenido/EstilosInicioSesion.css"  />
 </head>
 <body>
     <div class="fondo">
@@ -19,10 +19,10 @@
             <div class="tarjeta">
                 <div class="encabezado">
                     <h1>Bienvenidos a GyF</h1>
-                    <img class="logo-encabezado" src="~/Content/imagenes/j1.png" alt="Logo GyF">
+                    <img class="logo-encabezado" src="~/Contenido/imagenes/j1.png" alt="Logo GyF">
                 </div>
 
-                @using (Html.BeginForm("InicioSesion", "User", FormMethod.Post))
+                @using (Html.BeginForm("InicioSesion", "Usuario", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
                     <button class="boton-amarillo" type="button">Usuario</button>
@@ -45,7 +45,7 @@
                         <br /><br />
 
 
-                        @Html.ActionLink("¿No tiene una cuenta? Regístrate", "CreateUsuario", "User")
+                        @Html.ActionLink("¿No tiene una cuenta? Regístrate", "CrearUsuario", "Usuario")
                     </div>
                 }
                 @if (ViewBag.MensajeError != null)
@@ -55,12 +55,12 @@
 
 
                 <div class="dragon">
-                    <img src="~/Content/imagenes/continuar.png" alt="dragón">
+                    <img src="~/Contenido/imagenes/continuar.png" alt="dragón">
                 </div>
             </div>
 
             <div class="imagen-lateral">
-                <img src="~/Content/imagenes/cala2.jpeg" alt="Partida de rol">
+                <img src="~/Contenido/imagenes/cala2.jpeg" alt="Partida de rol">
             </div>
         </div>
     </div>

@@ -1,12 +1,12 @@
 ﻿@model List<GeniosyFiguras.Dtos.UsuarioConCalificacionDto>
 @{
     ViewBag.Title = "IndexEstudiante";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Compartido/Encabezado.cshtml";
 }
-
+<link rel="stylesheet" href="~/Contenido/Estudiantes1.css" />
 <h2>Listado de Estudiantes con Calificaciones</h2>
 
-<button class="btn-accion agregar-estudiante" data-id="@ViewBag.IdCurso" title="Agregar estudiante">➕</button>
+<button class="btn-accion agregar-estudiante" data-id="@ViewBag.IdCurso" title="Agregar estudiante">➕ Ingresar estudiante</button>
 <script>
     $(function () {
         $('.agregar-estudiante').on('click', function () {

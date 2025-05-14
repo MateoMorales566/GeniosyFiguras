@@ -22,9 +22,9 @@ namespace GeniosyFiguras
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Contenido/css").Include(
+                      "~/Contenido/bootstrap.css",
+                      "~/Contenido/site.css"));
         }
     }
 }

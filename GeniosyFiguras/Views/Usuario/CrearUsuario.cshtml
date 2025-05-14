@@ -1,11 +1,11 @@
 ﻿@model GeniosyFiguras.Dtos.UsuarioDto
 @using System.Web.Mvc
 @{
-    ViewBag.Title = "CreateUsuario";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "CrearUsuario";
+    Layout = "~/Views/Compartido/Encabezado.cshtml";
 }
 
-<link rel="stylesheet" type="text/css" href="~/Content/EstilosRegistro.css" />
+<link rel="stylesheet" type="text/css" href="~/Contenido/EstilosRegistro.css" />
 
 <h2>Registro de Usuario</h2>
 
@@ -13,7 +13,7 @@
 <div id="id01" class="modal" style="display:block;">
     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 
-    @using (Html.BeginForm("CreateUsuario", "User", FormMethod.Post, new { @class = "modal-content" }))
+    @using (Html.BeginForm("CrearUsuario", "Usuario", FormMethod.Post, new { @class = "modal-content" }))
     {
         @Html.AntiForgeryToken()
 

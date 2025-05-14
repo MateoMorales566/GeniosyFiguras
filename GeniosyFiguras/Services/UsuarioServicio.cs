@@ -2,7 +2,9 @@
 using GeniosyFiguras.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace GeniosyFiguras.Services
@@ -11,7 +13,7 @@ namespace GeniosyFiguras.Services
 
     {
         private readonly UsuarioRepositorio _usuarioRepositorio = new UsuarioRepositorio();
-        public UsuarioDto CreateUsuario(UsuarioDto usuarioModel)
+        public UsuarioDto CrearUsuario(UsuarioDto usuarioModel)
         {
 
             UsuarioDto responseUsuarioDto = new UsuarioDto();
@@ -19,7 +21,7 @@ namespace GeniosyFiguras.Services
             try
             {
                 usuarioModel.IdRol = 2;
-                if(usuarioRepositorio.CreateUsuario(usuarioModel)!=0)
+                if (usuarioRepositorio.CrearUsuario(usuarioModel) != 0)
                 {
                     responseUsuarioDto.Response = 1;
                     responseUsuarioDto.Message = "Creacion exitosa";
@@ -27,7 +29,6 @@ namespace GeniosyFiguras.Services
                     {
                         usuarioRepositorio.EnviarCorreoConfirmacion(usuarioModel.Email, usuarioModel.Nombres);
                     }
-
                 }
                 else
                 {
@@ -35,16 +36,29 @@ namespace GeniosyFiguras.Services
                     responseUsuarioDto.Message = "Algo paso";
                 }
 
-             
                 return responseUsuarioDto;
-
             }
-            catch(Exception e)
+            catch (SqlException e)
+            {
+                StringBuilder errorDetails = new StringBuilder();
+
+                foreach (SqlError error in e.Errors)
+                {
+                    errorDetails.AppendLine($"SQL Error: {error.Message}");
+                }
+
+                responseUsuarioDto.Response = 0;
+                responseUsuarioDto.Message = errorDetails.ToString();
+                return responseUsuarioDto;
+            }
+            catch (Exception e)
             {
                 responseUsuarioDto.Response = 0;
-                responseUsuarioDto.Message = e.InnerException.ToString();
+                responseUsuarioDto.Message = e.Message;
                 return responseUsuarioDto;
             }
+
+
         }
 
         public List<UsuarioConCalificacionDto> ObtenerUsuariosPorCursoConNotas(int idCurso)

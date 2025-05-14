@@ -7,7 +7,7 @@ using GeniosyFiguras.Dtos;
 
 namespace GeniosyFiguras.Controllers
 {
-    public class HomeController : Controller
+    public class PrincipalController : Controller
     {
         public ActionResult Index()
         {

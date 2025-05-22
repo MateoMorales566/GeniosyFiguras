@@ -10,29 +10,23 @@
     <div class="menu-lateral">
         <img src="~/Contenido/imagenes/j1.png" alt="Iglesia" class="logo-iglesia">
 
-        <div class="opcion-menu">
-            <span>Datos personales</span>
-            <img src="~/Contenido/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha">
-        </div>
+        
 
         <div class="opcion-menu" onclick="window.location.href='@Url.Action("IndexCurso", "Curso")'" >
             <span>Mis cursos </span>
             <img src="~/Contenido/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha">
         </div>
 
-        <div class="opcion-menu"
-             <span>Atributos</span>
-            <img src="~/Contenido/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha">
-        </div>
+        
 
-        <div class="opcion-menu">
+        <div class="opcion-menu" onclick="window.location.href='@Url.Action("IndexEnemigo", "Enemigo")'">
             <span>Enemigos</span>
             <img src="~/Contenido/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha">
         </div>
 
-        <div class="icono-home">
+        <a href="@Url.Action("Index", "Principal")" class="icono-home">
             <img src="~/Contenido/imagenes/casa.png" alt="Inicio">
-        </div>
+        </a>
     </div>
 
     <div class="contenido-principal">
@@ -53,7 +47,7 @@
             </div>
         </div>
 
-        <button class="boton-cerrar-sesion">Cerrar sesión</button>
+        
     </div>
 </div>
 

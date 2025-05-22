@@ -14,8 +14,8 @@
 
     <!-- Estilos personalizados -->
     <link href="~/Contenido/encabezado.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Contenido/EstilosInicioSesion.css" />
 
-    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     @RenderSection("styles", required: false)
@@ -24,14 +24,14 @@
 </head>
 <body>
     <header class="navbar">
-
-        <div class="header-logo titulo">GeniosyFiguras</div>
+        <div class="header-logo titulo d-flex align-items-center gap-2">
+            <img src="~/Contenido/imagenes/continuar.png" alt="Logo" style="height: 20px; width: auto;" />
+            <span>GeniosyFiguras</span>
+        </div>
         <nav class="nav-links">
             <a href="@Url.Action("Index", "Principal")">Inicio</a>
-            <a href="@Url.Action("Juegos", "Principal")">Juegos</a>
-            <a href="@Url.Action("Empleo", "Principal")">Empleo</a>
-            <a href="@Url.Action("About", "Principal")">Acerca de</a>
-            <a href="@Url.Action("Contact", "Principal")">Contacto</a>
+            <a href="@Url.Action("AcercaDeNosotros", "Principal")">Acerca de</a>
+            <a href="@Url.Action("Contacto", "Principal")">Contacto</a>
 
             @{
                 var nombreCompleto = Session["NombreCompleto"] as string;
@@ -51,6 +51,7 @@
             }
         </nav>
     </header>
+
 
     <main>
         @RenderBody()

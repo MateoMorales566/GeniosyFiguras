@@ -1,0 +1,68 @@
+﻿@model string
+<style>
+    .password-reset-container {
+        background-color: #b3e5fc;
+        min-height: calc(100vh - 150px); /* Ajusta según el tamaño de tu header y footer */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+    }
+
+    .password-reset-box {
+        background-color: white;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 400px;
+    }
+
+        .password-reset-box label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .password-reset-box input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .password-reset-box button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #0288d1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            .password-reset-box button:hover {
+                background-color: #0277bd;
+            }
+</style>
+
+<div class="password-reset-container">
+    <div class="password-reset-box">
+        @using (Html.BeginForm("CambiarContrasena", "Usuario", FormMethod.Post))
+        {
+            @Html.Hidden("Correo", Model)
+
+            <label>Nueva Contraseña:</label>
+            <input type="password" name="NuevaContrasena" required />
+
+            <label>Confirmar Contraseña:</label>
+            <input type="password" name="ConfirmarContrasena" required />
+
+            <button type="submit">Guardar</button>
+        }
+    </div>
+</div>
+

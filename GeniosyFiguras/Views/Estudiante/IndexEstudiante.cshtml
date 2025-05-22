@@ -1,19 +1,24 @@
 ﻿@model List<GeniosyFiguras.Dtos.UsuarioConCalificacionDto>
+
 @{
     ViewBag.Title = "IndexEstudiante";
     Layout = "~/Views/Compartido/Encabezado.cshtml";
 }
-<link rel="stylesheet" href="~/Contenido/Estudiantes1.css" />
-<h2>Listado de Estudiantes con Calificaciones</h2>
 
-<button class="btn-accion agregar-estudiante" data-id="@ViewBag.IdCurso" title="Agregar estudiante">➕ Ingresar estudiante</button>
+<!-- Estilos visuales del fondo general -->
+<link rel="stylesheet" href="~/Contenido/EstilosFondo.css" />
+
+<h2 class="titulo-pagina">Listado de Estudiantes con Calificaciones</h2>
+
+<!-- Botón agregar estudiante -->
+<button class="btn-agregar-estudiante" data-id="@ViewBag.IdCurso" title="Agregar estudiante">➕ Ingresar estudiante</button>
+
 <script>
     $(function () {
-        $('.agregar-estudiante').on('click', function () {
+        $('.btn-agregar-estudiante').on('click', function () {
             var id = $(this).data('id');
             if (id) {
                 window.location.href = '/Estudiante/NuevoEstudiante/' + id;
-
             } else {
                 alert('No se encontró el ID del curso.');
             }
@@ -21,7 +26,8 @@
     });
 </script>
 
-<table class="table table-bordered">
+<!-- Tabla de estudiantes -->
+<table class="tabla-contenido">
     <thead>
         <tr>
             <th>Usuario</th>
@@ -36,21 +42,23 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr data-curso="@item.IdCurso">
-
-            <td>@item.Usuario.NombreUsuario</td>
-            <td>@item.NotaMatematicas</td>
-            <td>@item.NotaSociales</td>
-            <td>@item.NotaCiencias</td>
-            <td>@item.NotaArtes</td>
-            <td>@item.NotaLenguas</td>
-            <td>
-                <a href="@Url.Action("EditarEstudiante", "Estudiante", new { idUsuario = item.Usuario.IdUsuario, idCurso = item.IdCurso })" class="btn-accion editar" title="Editar">✏️</a>
-                <a href="@Url.Action("EliminarEstudiante", "Estudiante", new { id = item.Usuario.IdUsuario, idCurso = ViewBag.IdCurso })" class="btn-accion eliminar" title="Eliminar" onclick="return confirm('¿Estás seguro de eliminar este estudiante?');">🗑️</a>
-            </td>
-        </tr>
+            <tr>
+                <td>@item.Usuario.NombreUsuario</td>
+                <td>@item.NotaMatematicas</td>
+                <td>@item.NotaSociales</td>
+                <td>@item.NotaCiencias</td>
+                <td>@item.NotaArtes</td>
+                <td>@item.NotaLenguas</td>
+                <td>
+                    <a href="@Url.Action("EditarEstudiante", "Estudiante", new { idUsuario = item.Usuario.IdUsuario, idCurso = item.IdCurso })" class="btn-accion editar" title="Editar">✏️</a>
+                    <a href="@Url.Action("EliminarEstudiante", "Estudiante", new { id = item.Usuario.IdUsuario, idCurso = ViewBag.IdCurso })" class="btn-accion eliminar" title="Eliminar">🗑️</a>
+                    <a href="@Url.Action("AtributosEstudiante", "Atributos", new { idCalificacion = item.IdCalificacion })" class="btn-accion atributos" title="Ver atributos">
+                        <img src="~/Contenido/imagenes/corazon.png" alt="Atributos" style="width:16px; height:16px;" />
+                    </a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
-
+<div style="background-color: #b4e4fc; height: 100px; width: 100%;"></div>
 

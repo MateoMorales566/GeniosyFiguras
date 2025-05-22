@@ -7,6 +7,7 @@ namespace GeniosyFiguras.Dtos
 {
     public class UsuarioConCalificacionDto
     {
+        public int IdCalificacion { get; set; }
         public UsuarioDto Usuario { get; set; } = new UsuarioDto();
 
         public decimal NotaMatematicas { get; set; }

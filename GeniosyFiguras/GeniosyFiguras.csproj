@@ -48,6 +48,12 @@
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
     </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -137,12 +143,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministradorController.cs" />
+    <Compile Include="Controllers\AtributosController.cs" />
     <Compile Include="Controllers\CursoController.cs" />
+    <Compile Include="Controllers\EnemigoController.cs" />
     <Compile Include="Controllers\EstudianteController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Controllers\ProfesorController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Dtos\CambioContrasenaDto.cs" />
     <Compile Include="Dtos\CursoDto.cs" />
+    <Compile Include="Dtos\EnemigoDto.cs" />
     <Compile Include="Dtos\RolDto.cs" />
     <Compile Include="Dtos\UsuarioConCalificacionDto.cs" />
     <Compile Include="Dtos\UsuarioCurso.cs" />
@@ -152,10 +162,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AdministradorRepositorio.cs" />
+    <Compile Include="Repositories\AtributoPoderRepositorio.cs" />
     <Compile Include="Repositories\CursoRepositorio.cs" />
+    <Compile Include="Repositories\EnemigoRepositorio.cs" />
+    <Compile Include="Repositories\Models\Atributo_Poder.cs" />
+    <Compile Include="Repositories\Models\EnemigoAtributo.cs" />
     <Compile Include="Repositories\UsuarioRepositorio.cs" />
+    <Compile Include="Services\AdministradorServicio.cs" />
     <Compile Include="Services\CursoServicio.cs" />
+    <Compile Include="Services\EnemigoServicio.cs" />
     <Compile Include="Services\UsuarioServicio.cs" />
+    <Compile Include="Utilities\CorreoUtil.cs" />
     <Compile Include="Utilities\DBContextUtility.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,7 +182,10 @@
     <Content Include="Contenido\bootstrap.css" />
     <Content Include="Contenido\bootstrap.min.css" />
     <Content Include="Contenido\encabezado.css" />
+    <Content Include="Contenido\EstilosAcercaDe.css" />
+    <Content Include="Contenido\EstilosContacto.css" />
     <Content Include="Contenido\EstilosCurso.css" />
+    <Content Include="Contenido\EstilosFondo.css" />
     <Content Include="Contenido\EstilosInicioSesion.css" />
     <Content Include="Contenido\EstilosRegistro.css" />
     <Content Include="Contenido\Estudiantes1.css" />
@@ -173,6 +194,7 @@
     <Content Include="Contenido\Imagenes\cala2.jpeg" />
     <Content Include="Contenido\Imagenes\casa.png" />
     <Content Include="Contenido\Imagenes\continuar.png" />
+    <Content Include="Contenido\Imagenes\corazon.png" />
     <Content Include="Contenido\Imagenes\enemigo1.jpg" />
     <Content Include="Contenido\Imagenes\enemigo2.jpg" />
     <Content Include="Contenido\Imagenes\enemigo3.jpg" />
@@ -184,6 +206,7 @@
     <Content Include="Contenido\Imagenes\j1.png" />
     <Content Include="Contenido\Menu.css" />
     <Content Include="Contenido\MenuProfesor.css" />
+    <Content Include="Contenido\PiePagina.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -212,8 +235,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Compartido\Error.cshtml" />
     <Content Include="Views\Compartido\Encabezado.cshtml" />
-    <Content Include="Views\Principal\About.cshtml" />
-    <Content Include="Views\Principal\Contact.cshtml" />
+    <Content Include="Views\Principal\Contacto.cshtml" />
     <Content Include="Views\Principal\Index.cshtml" />
     <Content Include="Views\Principal\Ejemplo.cshtml" />
     <Content Include="Views\Principal\Ejemplo1.cshtml" />
@@ -231,11 +253,19 @@
     <Content Include="Views\Estudiante\IndexEstudiante.cshtml" />
     <Content Include="Views\Estudiante\NuevoEstudiante.cshtml" />
     <Content Include="Views\Estudiante\EditarEstudiante.cshtml" />
+    <Content Include="Views\Usuario\CambioDeContrasena.cshtml" />
+    <Content Include="Views\Usuario\EnvioCorreoContrasena.cshtml" />
+    <Content Include="Views\Usuario\CorreoCambioContrasena.cshtml" />
+    <Content Include="Views\Atributos\AtributosEstudiante.cshtml" />
+    <Content Include="Views\Enemigo\NuevoEnemigo.cshtml" />
+    <Content Include="Views\Enemigo\IndexEnemigo.cshtml" />
+    <Content Include="Views\Principal\AcercaDeNosotros.cshtml" />
+    <Content Include="Views\Estudiante\PrincipalEstudiante.cshtml" />
+    <Content Include="Views\Administrador\PrincipalAdministrador.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Repositories\Models\" />
-    <Folder Include="Views\Administrador\" />
+    <Folder Include="Views\AdministradorRepositorio\" />
     <Folder Include="Views\Estilos\" />
   </ItemGroup>
   <ItemGroup>

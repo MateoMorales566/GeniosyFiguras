@@ -88,7 +88,11 @@ namespace GeniosyFiguras.Controllers
             return RedirectToAction("IndexEstudiante", new { id = idCurso });
         }
 
-
+        public ActionResult PrincipalEstudiante()
+        {
+            
+            return View();
+        }
 
 
     }

@@ -14,14 +14,14 @@ namespace GeniosyFiguras.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult AcercaDeNosotros()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Contacto()
         {
             ViewBag.Message = "Your contact page.";
 
@@ -40,6 +40,13 @@ namespace GeniosyFiguras.Controllers
         {
            
             return View("InicioSesion");
+        }
+        public ActionResult CerrarSesion()
+        {
+            Session.Clear(); // Borra toda la sesión
+            Session.Abandon(); // Marca la sesión como terminada
+
+            return RedirectToAction("InicioSesion", "Principal"); // Redirige a la vista de inicio de sesión
         }
     }
 }

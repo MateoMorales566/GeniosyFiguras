@@ -3,6 +3,58 @@
 }
 <!DOCTYPE html>
 <html lang="es">
+<head>
+    <style>
+        body {
+            margin: 0;
+            background-color: #00aabb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 5px solid white;
+        }
+
+        .enemigos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 50px 20px;
+            flex-wrap: wrap;
+        }
+
+        .enemigo {
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+            .enemigo:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .enemigo img {
+                max-width: 150px;
+                height: auto;
+                border-radius: 10px;
+            }
+
+            .enemigo p {
+                margin-top: 10px;
+                font-weight: bold;
+                font-size: 18px;
+            }
+    </style>
+</head>
 <body>
     <section class="banner">
         <img src="~/Contenido/imagenes/fotoprincipal.jpeg" alt="Banner Juegos" class="banner-img" />

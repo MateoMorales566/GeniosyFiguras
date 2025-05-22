@@ -1,0 +1,24 @@
+﻿@model GeniosyFiguras.Dtos.CambioContrasenaDto
+
+<div style="background-color: #e1f5fe; padding: 40px; font-family: Arial, sans-serif; color: #333;">
+    <div style="max-width: 600px; margin: auto; background: white; border-radius: 10px; padding: 30px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <h2 style="color: #0288d1;">Recuperar contraseña</h2>
+        <p>Hola <strong>@Model.NombreUsuario</strong>,</p>
+
+        <p>Tu nombre de usuario en <strong>Genios y Figuras</strong> es:</p>
+        <p style="font-size: 18px; font-weight: bold; color: #0077cc;">@Model.NombreUsuario</p>
+
+        <p>Haz clic en el siguiente botón para restablecer tu contraseña:</p>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="@Model.Link" style="background-color: #00aaff; color: white; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block;">
+                Restablecer la contraseña
+            </a>
+        </div>
+
+        <p>Si no solicitaste este cambio, puedes ignorar este mensaje.</p>
+
+        <p style="font-size: 12px; color: #888;">Este enlace caduca en 24 horas por razones de seguridad.</p>
+    </div>
+</div>
+

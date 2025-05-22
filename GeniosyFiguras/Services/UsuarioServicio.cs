@@ -97,7 +97,15 @@ namespace GeniosyFiguras.Services
             _usuarioRepositorio.EliminarUsuarioYNotas(idUsuario);
         }
 
-
+        public UsuarioDto ObtenerPorCorreo(string email)
+        {
+            return _usuarioRepositorio.ObtenerPorCorreo(email);
+        }
+        public void Actualizar(UsuarioDto usuario)
+        {
+            UsuarioRepositorio repositorio = new UsuarioRepositorio();
+            repositorio.Actualizar(usuario);
+        }
 
 
     }

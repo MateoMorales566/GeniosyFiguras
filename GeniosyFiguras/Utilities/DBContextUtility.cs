@@ -13,7 +13,7 @@ namespace GeniosyFiguras.Utilities
         static string SERVER = "LAPTOP-CORO87NM";
         static string DB_NAME = "APP";
         static string DB_USER = "mateo";
-        static string DB_PASSWORD = "1234";
+        static string DB_PASSWORD = "12345";
 
         static string Conn = "server=" + SERVER + ";dataBase=" + DB_NAME+ ";user id=" +DB_USER+ ";password="+ DB_PASSWORD +";MultipleActiveResultSets=true;";
         //Mi conexion

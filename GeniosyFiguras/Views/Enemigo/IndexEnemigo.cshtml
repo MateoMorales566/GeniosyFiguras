@@ -1,0 +1,49 @@
+﻿@model List<GeniosyFiguras.Repositories.Models.EnemigoAtributo>
+@{
+    ViewBag.Title = "Listado de Enemigos";
+    Layout = "~/Views/Compartido/Encabezado.cshtml";
+}
+
+<link href="~/Contenido/EstilosFondo.css" rel="stylesheet" />
+
+<h2>Enemigos Creados</h2>
+<div class="contenedor-retroceso">
+    <a href="/Profesor/IndexProfesor" class="btn-retroceso">⬅️ Volver a Profesores</a>
+
+</div>
+<div class="barra-busqueda">
+    <form method="get" action="/Curso/IndexCurso">
+        <button type="button" class="btn-nuevo" onclick="location.href='/Enemigo/NuevoEnemigo'">➕ Nuevo Enemigo</button>
+    </form>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Fuerza</th>
+            <th>Velocidad</th>
+            <th>Durabilidad</th>
+            <th>Inteligencia</th>
+            <th>Mana</th>
+            <th>Salud</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Enemigo.Nombre</td>
+                <td>@item.Enemigo.Descripcion</td>
+                <td>@item.Atributos.Fuerza</td>
+                <td>@item.Atributos.Velocidad</td>
+                <td>@item.Atributos.Durabilidad</td>
+                <td>@item.Atributos.Inteligencia</td>
+                <td>@item.Atributos.Mana</td>
+                <td>@item.Atributos.Salud</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div style="background-color: #b4e4fc; height: 100px; width: 100%;"></div>

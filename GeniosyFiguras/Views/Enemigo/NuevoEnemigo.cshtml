@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "NuevoEnemigo";
+    Layout = "~/Views/Compartido/Encabezado.cshtml";
+}
+@model GeniosyFiguras.Repositories.Models.EnemigoAtributo
+
+<h2>Nuevo Enemigo</h2>
+
+@using (Html.BeginForm("NuevoEnemigo", "Enemigo", FormMethod.Post))
+{
+    <h4>Datos del Enemigo</h4>
+
+    <div>
+        @Html.LabelFor(m => m.Enemigo.Nombre)
+        @Html.TextBoxFor(m => m.Enemigo.Nombre)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Enemigo.Descripcion)
+        @Html.TextBoxFor(m => m.Enemigo.Descripcion)
+    </div>
+    
+
+    <h4>Atributos</h4>
+    <div>
+        @Html.LabelFor(m => m.Atributos.Fuerza)
+        @Html.TextBoxFor(m => m.Atributos.Fuerza)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Atributos.Velocidad)
+        @Html.TextBoxFor(m => m.Atributos.Velocidad)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Atributos.Durabilidad)
+        @Html.TextBoxFor(m => m.Atributos.Durabilidad)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Atributos.Inteligencia)
+        @Html.TextBoxFor(m => m.Atributos.Inteligencia)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Atributos.Mana)
+        @Html.TextBoxFor(m => m.Atributos.Mana)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Atributos.Salud)
+        @Html.TextBoxFor(m => m.Atributos.Salud)
+    </div>
+
+    <button type="submit">Guardar</button>
+}
+
+
+

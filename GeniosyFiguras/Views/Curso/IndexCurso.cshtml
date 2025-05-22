@@ -4,102 +4,53 @@
     ViewBag.Title = "IndexCurso";
     Layout = "~/Views/Compartido/Encabezado.cshtml";
 }
-<link href="~/Contenido/EstilosCurso.css" rel="stylesheet" />
-<div class="contenedor-cursos">
-    <h2>Listado de tus cursos</h2>
 
-    <div class="barra-busqueda">
-        <form method="get" action="/Curso/IndexCurso" class="barra-busqueda">
-            <label for="IdCurso">IdCurso:</label>
-            <input type="text" id="IdCurso" name="IdCurso" placeholder="IdCurso">
+<link href="~/Contenido/EstilosFondo.css" rel="stylesheet" />
 
-            <label for="NombreCurso">NombreCurso:</label>
-            <input type="text" id="NombreCurso" name="NombreCurso" placeholder="NombreCurso">
+<h2 class="titulo-pagina">Listado de tus cursos</h2>
 
-            <button type="submit" class="btn-buscar">🔍 Buscar</button>
+<!-- Barra de búsqueda y botón nuevo curso -->
+<form method="get" action="/Curso/IndexCurso" class="barra-busqueda">
+    <input type="text" id="IdCurso" name="IdCurso" placeholder="ID del Curso" class="input-busqueda" />
+    <input type="text" id="NombreCurso" name="NombreCurso" placeholder="Nombre del Curso" class="input-busqueda" />
 
-            <button type="button" class="btn-nuevo" onclick="location.href='/Curso/NuevoCurso'">➕ Nuevo Curso</button>
-        </form>
+    <button type="submit" class="btn-buscar">🔍 Buscar</button>
+    <button type="button" class="btn-nuevo" onclick="location.href='/Curso/NuevoCurso'">➕ Nuevo Curso</button>
+    <!-- Botón de retroceso -->
+    <div class="contenedor-retroceso">
+        <a href="/Profesor/IndexProfesor" class="btn-retroceso">⬅️ Volver a Profesores</a>
+
     </div>
 
-    <table class="tabla-cursos">
-        <thead>
+</form>
+
+<!-- Tabla de cursos -->
+<table class="tabla-cursos">
+    <thead>
+        <tr>
+            <th>ID Curso</th>
+            <th>Nombre del Curso</th>
+            <th>Número de Estudiantes</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var curso in Model)
+        {
             <tr>
-                <th>IdCurso</th>
-                <th>Nombre del Curso</th>
-                <th>Número de Estudiantes</th>
-                <th>Acciones</th>
+                <td>@curso.IdCurso</td>
+                <td>@curso.NombreCurso</td>
+                <td>@curso.NumeroEstudiantes</td>
+                <td>
+                    <a href="@Url.Action("EditarCurso", "Curso", new { id = curso.IdCurso })" class="btn-accion editar" title="Editar">✏️</a>
+                    <a href="@Url.Action("IndexEstudiante", "Estudiante", new { id = curso.IdCurso })" class="btn-accion estudiantes" title="Ver estudiantes">👥</a>
+                    <a href="@Url.Action("EliminarCurso", "Curso", new { id = curso.IdCurso })" class="btn-accion eliminar" title="Eliminar" onclick="return confirm('¿Estás seguro de eliminar este curso?')">🗑️</a>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var curso in Model)
-            {
-                <tr>
-                    <td>@curso.IdCurso</td>
-                    <td>@curso.NombreCurso</td>
-                    <td>@curso.NumeroEstudiantes</td>
-                    <td>
-                        <button class="btn-accion editar" data-id="@curso.IdCurso" title="Editar">✏️</button>
-
-                        <script>
-                            $(function () {
-                                $('.editar').on('click', function () {
-                                    var id = $(this).data('id');
-                                    console.log("ID capturado:", id);
-
-                                    if (!id) {
-                                        alert('Error: No se encontró el ID del curso.');
-                                        return;
-                                    }
-
-                                    window.location.href = '/Curso/EditarCurso/' + id;
-                                });
-                            });
-                        </script>
+        }
+    </tbody>
+</table>
+<div style="background-color: #b4e4fc; height: 100px; width: 100%;"></div>
 
 
-
-                        <button class="btn-accion estudiantes" data-id="@curso.IdCurso" title="Ver estudiantes">👥</button>
-
-                        <script>
-                            $(function () {
-                                $('.estudiantes').on('click', function () {
-                                    var id = $(this).data('id');
-                                    if (id) {
-                                        window.location.href = '/Estudiante/IndexEstudiante/' + id;
-                                    } else {
-                                        alert('No se encontró el ID del curso.');
-                                    }
-                                });
-                            });
-                        </script>
-
-
-
-                        <button class="btn-accion eliminar" data-id="@curso.IdCurso" title="Eliminar">🗑️</button>
-                        <script>
-                            $(function () {
-                                $('.eliminar').on('click', function () {
-                                    var id = $(this).data('id');
-                                    console.log("ID capturado para eliminar:", id);
-
-                                    if (!id) {
-                                        alert('Error: No se encontró el ID del curso.');
-                                        return;
-                                    }
-
-                                    if (confirm('¿Estás seguro de que deseas eliminar este curso?')) {
-                                        window.location.href = '/Curso/EliminarCurso/' + id;
-                                    }
-                                });
-                            });
-                        </script>
-
-
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
 

@@ -1,0 +1,168 @@
+﻿h2 {
+    margin-top: 20px;
+    text-align: center;
+    color: #003344;
+    font-weight: bold;
+}
+
+.barra-busqueda {
+    margin: 20px;
+    text-align: center;
+}
+
+.btn-nuevo {
+    background-color: #00aabb;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .btn-nuevo:hover {
+        background-color: #008899;
+    }
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 90%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #00aabb;
+    color: white;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e0f7fa;
+}
+.titulo-pagina {
+    text-align: center;
+    font-size: 2.2em;
+    color: #042940;
+    margin: 20px 0;
+}
+
+/* Botón Ingresar estudiante */
+.btn-agregar-estudiante {
+    display: block;
+    margin: 0 auto 20px auto;
+    background-color: #00a9b7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+    .btn-agregar-estudiante:hover {
+        background-color: #008ea0;
+    }
+
+/* Tabla */
+.tabla-contenido {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f4faff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+    .tabla-contenido th, .tabla-contenido td {
+        padding: 12px;
+        border: 1px solid #d0e3f0;
+        text-align: center;
+    }
+
+    .tabla-contenido th {
+        background-color: #d1f4f9;
+        color: #00203f;
+        font-weight: bold;
+    }
+
+/* Botones de acción */
+.btn-accion {
+    text-decoration: none;
+    background-color: #00bcd4;
+    color: white;
+    padding: 8px;
+    margin: 2px;
+    border-radius: 10px;
+    display: inline-block;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+    .btn-accion:hover {
+        background-color: #008fa1;
+        transform: scale(1.1);
+    }
+/* Botón de retroceso */
+.contenedor-retroceso {
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.btn-retroceso {
+    display: inline-block;
+    background-color: #00aabb;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 1em;
+    text-decoration: none;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .btn-retroceso:hover {
+        background-color: #1565c0;
+        transform: scale(1.05);
+    }
+.contenedor-atributos {
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: #ffffffcc;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-atributos {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+    .tabla-atributos th {
+        background-color: #007BFF;
+        color: white;
+        padding: 12px;
+        text-align: left;
+        border-radius: 6px 0 0 6px;
+        width: 50%;
+    }
+
+    .tabla-atributos td {
+        background-color: #f0f8ff;
+        padding: 12px;
+        border-radius: 0 6px 6px 0;
+    }

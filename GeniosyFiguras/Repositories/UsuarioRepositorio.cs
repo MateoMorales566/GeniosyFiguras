@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Mime;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 
 namespace GeniosyFiguras.Repositories
 {
@@ -54,7 +55,7 @@ namespace GeniosyFiguras.Repositories
         public void EnviarCorreoConfirmacion(string destinatario, string nombre)
         {
             var correo = new MailMessage();
-            correo.From = new MailAddress("geniosyfiguras@gmail.com");
+            correo.From = new MailAddress("geniosyfiguras566@gmail.com");
             correo.To.Add(destinatario);
             correo.Subject = "¡Bienvenido a Genios y Figuras!";
 
@@ -96,6 +97,42 @@ namespace GeniosyFiguras.Repositories
             smtp.Send(correo);
         }
 
+        public UsuarioDto ObtenerPorCorreo(string email)
+        {
+            using (var conexion = new SqlConnection(DBContextUtility.CadenaConexion))
+            {
+                conexion.Open();
+                var query = "SELECT * FROM Usuario WHERE Email = @Email";
+                using (var comando = new SqlCommand(query, conexion))
+                {
+                    comando.Parameters.AddWithValue("@Email", email);
+                    using (var lector = comando.ExecuteReader())
+                    {
+                        if (lector.Read())
+                        {
+                            return new UsuarioDto
+                            {
+                                IdUsuario = Convert.ToInt32(lector["IdUsuario"]),
+                                Nombres = lector["Nombres"].ToString(),
+                                Apellidos = lector["Apellidos"].ToString(),
+                                Email = lector["Email"].ToString(),
+                                Telefono = lector["Telefono"].ToString(),
+                                NombreUsuario = lector["Usuario"].ToString(),
+                                Contraseña = lector["Contraseña"].ToString(),
+                                IdRol = Convert.ToInt32(lector["IdRol"])
+                                // Response y Message
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+
+
+
+
 
         public List<UsuarioConCalificacionDto> ObtenerUsuariosPorCursoConNotas(int idCurso)
         {
@@ -105,7 +142,7 @@ namespace GeniosyFiguras.Repositories
             {
                 conexion.Open();
 
-                
+                    
                 var cmd = new SqlCommand("ObtenerUsuariosPorCursoConNotas", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@IdCurso", idCurso);
@@ -116,6 +153,7 @@ namespace GeniosyFiguras.Repositories
                     {
                         var dto = new UsuarioConCalificacionDto
                         {
+                            IdCalificacion = Convert.ToInt32(reader["IdCalificacion"]),
                             Usuario = new UsuarioDto
                             {
                                 IdUsuario = Convert.ToInt32(reader["IdUsuario"]),
@@ -292,11 +330,11 @@ namespace GeniosyFiguras.Repositories
                 conexion.Open();
 
                 var cmd = new SqlCommand(@"
-            SELECT u.IdUsuario, u.Nombres, u.Apellidos, u.Usuario, u.Contraseña,
-                   c.NotaMatematicas, c.NotaSociales, c.NotaCiencias, c.NotaArtes, c.NotaLenguas
-            FROM Usuario u
-            INNER JOIN Calificacion c ON u.IdUsuario = c.IdUsuario
-            WHERE u.IdUsuario = @IdUsuario", conexion);
+                SELECT u.IdUsuario, u.Nombres, u.Apellidos, u.Usuario, u.Contraseña,
+                       c.IdCalificacion,c.NotaMatematicas, c.NotaSociales, c.NotaCiencias, c.NotaArtes, c.NotaLenguas, c.IdCurso  
+                FROM Usuario u
+                INNER JOIN Calificacion c ON u.IdUsuario = c.IdUsuario
+                WHERE u.IdUsuario = @IdUsuario", conexion);
 
                 cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
 
@@ -306,6 +344,7 @@ namespace GeniosyFiguras.Repositories
                     {
                         return new UsuarioConCalificacionDto
                         {
+                            IdCalificacion = Convert.ToInt32(reader["IdCalificacion"]),
                             Usuario = new UsuarioDto
                             {
                                 IdUsuario = Convert.ToInt32(reader["IdUsuario"]),
@@ -318,7 +357,8 @@ namespace GeniosyFiguras.Repositories
                             NotaSociales = Convert.ToDecimal(reader["NotaSociales"]),
                             NotaCiencias = Convert.ToDecimal(reader["NotaCiencias"]),
                             NotaArtes = Convert.ToDecimal(reader["NotaArtes"]),
-                            NotaLenguas = Convert.ToDecimal(reader["NotaLenguas"])
+                            NotaLenguas = Convert.ToDecimal(reader["NotaLenguas"]),
+                            IdCurso = Convert.ToInt32(reader["IdCurso"])
                         };
                     }
                 }
@@ -326,6 +366,76 @@ namespace GeniosyFiguras.Repositories
 
             return null; 
         }
+        public void Actualizar(UsuarioDto usuario)
+        {
+            using (SqlConnection conexion = new SqlConnection(DBContextUtility.CadenaConexion))
+            {
+                string query = "UPDATE Usuario SET Contraseña = @Contraseña WHERE Email = @Email";
+                SqlCommand cmd = new SqlCommand(query, conexion);
+
+                System.Diagnostics.Debug.WriteLine("SQL que se ejecutará: " + query);
+                System.Diagnostics.Debug.WriteLine("Email: " + usuario.Email);
+                System.Diagnostics.Debug.WriteLine("Contraseña (Hash): " + usuario.Contraseña);
+
+
+                cmd.Parameters.AddWithValue("@Contraseña", usuario.Contraseña);
+                cmd.Parameters.AddWithValue("@Email", usuario.Email);
+                conexion.Open();
+                cmd.ExecuteNonQuery();
+
+
+            }
+        }
+
+        public List<UsuarioConCalificacionDto> ObtenerUsuariosPorCurso(int idCurso)
+        {
+            var lista = new List<UsuarioConCalificacionDto>();
+
+            using (var conexion = new SqlConnection(DBContextUtility.CadenaConexion))
+            {
+                conexion.Open();
+
+                var cmd = new SqlCommand(@"
+            SELECT 
+                c.IdCalificacion,
+                u.IdUsuario, u.Nombres, u.Apellidos, u.Usuario,
+                c.NotaMatematicas, c.NotaSociales, c.NotaCiencias, c.NotaArtes, c.NotaLenguas,
+                c.IdCurso
+            FROM Calificacion c
+            INNER JOIN Usuario u ON u.IdUsuario = c.IdUsuario
+            WHERE c.IdCurso = @IdCurso", conexion);
+
+                cmd.Parameters.AddWithValue("@IdCurso", idCurso);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(new UsuarioConCalificacionDto
+                        {
+                            IdCalificacion = Convert.ToInt32(reader["IdCalificacion"]),
+                            IdCurso = Convert.ToInt32(reader["IdCurso"]),
+                            Usuario = new UsuarioDto
+                            {
+                                IdUsuario = Convert.ToInt32(reader["IdUsuario"]),
+                                Nombres = reader["Nombres"].ToString(),
+                                Apellidos = reader["Apellidos"].ToString(),
+                                NombreUsuario = reader["Usuario"].ToString()
+                            },
+                            NotaMatematicas = Convert.ToDecimal(reader["NotaMatematicas"]),
+                            NotaSociales = Convert.ToDecimal(reader["NotaSociales"]),
+                            NotaCiencias = Convert.ToDecimal(reader["NotaCiencias"]),
+                            NotaArtes = Convert.ToDecimal(reader["NotaArtes"]),
+                            NotaLenguas = Convert.ToDecimal(reader["NotaLenguas"])
+                        });
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+
 
 
 

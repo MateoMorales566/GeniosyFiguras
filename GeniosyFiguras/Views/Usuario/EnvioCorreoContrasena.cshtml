@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Recuperar contraseña";
+}
+
+<style>
+    .recover-container {
+        background-color: #b3e5fc;
+        min-height: calc(100vh - 150px); /* Ajusta si tu header/footer es más grande */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+    }
+
+    .recover-box {
+        background-color: white;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+
+        .recover-box h2 {
+            color: #0288d1;
+            margin-bottom: 10px;
+        }
+
+        .recover-box p {
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .recover-box input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .recover-box button {
+            background-color: #0288d1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            .recover-box button:hover {
+                background-color: #0277bd;
+            }
+
+        .recover-box .message {
+            margin-top: 15px;
+            color: green;
+            font-weight: bold;
+        }
+</style>
+
+<div class="recover-container">
+    <div class="recover-box">
+        <h2>Recuperar contraseña</h2>
+        <p>Introduce tu correo electrónico para enviarte un enlace de recuperación.</p>
+
+        @using (Html.BeginForm())
+        {
+            <input type="email" name="email" required placeholder="Tu correo" />
+            <button type="submit">Enviar</button>
+        }
+
+        @if (ViewBag.Mensaje != null)
+        {
+            <p class="message">@ViewBag.Mensaje</p>
+        }
+    </div>
+</div>

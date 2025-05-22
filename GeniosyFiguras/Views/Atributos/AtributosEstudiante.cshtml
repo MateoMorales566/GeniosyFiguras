@@ -1,0 +1,27 @@
+﻿@model GeniosyFiguras.Repositories.Models.Atributo_Poder
+
+@{
+    ViewBag.Title = "Atributos del Estudiante";
+    Layout = "~/Views/Compartido/Encabezado.cshtml";
+}
+
+<link rel="stylesheet" href="~/Contenido/EstilosFondo.css" />
+
+<div class="contenedor-atributos">
+    <h2>Atributos del Estudiante</h2>
+
+    <table class="tabla-atributos">
+        <tr><th>💪 Fuerza</th><td>@Model.Fuerza</td></tr>
+        <tr><th>⚡ Velocidad</th><td>@Model.Velocidad</td></tr>
+        <tr><th>🛡️ Durabilidad</th><td>@Model.Durabilidad</td></tr>
+        <tr><th>🧠 Inteligencia</th><td>@Model.Inteligencia</td></tr>
+        <tr><th>🔮 Mana</th><td>@Model.Mana</td></tr>
+        <tr><th>❤️ Salud</th><td>@Model.Salud</td></tr>
+    </table>
+
+    <div class="contenedor-retroceso">
+        <a href="/Curso/IndexCurso" class="btn-retroceso">⬅️ Volver a Cursos</a>
+    </div>
+</div>
+
+<div style="background-color: #b4e4fc; height: 100px; width: 100%;"></div>
